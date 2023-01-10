@@ -1,0 +1,66 @@
+<!-- <html>
+  <head>
+    <title>Flask Intro - login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Please login</h1>
+      <br>
+      <form action="" method="post">
+        <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+         <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        <input class="btn btn-default" type="submit" value="Login">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="{{ url_for('static', filename='./css/login.css') }}" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+
+<body>
+  <section>
+    <div class="imgBx">
+      <img src="../static/images/login.jpg" alt="login_img">
+    </div>
+    <div class="contentBx">
+      <div class="formBx">
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+        {% endif %}
+        <h2>Login</h2>
+            <form action="" method="post">
+                <div class="inputBx">
+                <input type="text" placeholder="Username" name="username" value="{{
+                  request.form.username }}">
+                </div>
+                <div class="inputBx">
+                 <input type="password" placeholder="Password" name="password" value="{{
+                  request.form.password }}">
+                </div>
+                <div class="inputBx">
+                <input class="btn btn-default" type="submit" value="Login">
+                </div>
+            </form>
+        </form>
+        <p>Developed & Designed By PTECH</p>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

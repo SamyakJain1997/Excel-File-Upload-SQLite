@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/dashboard.css') }}" type="text/css">
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+    <title>File View</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2><a href="{{url_for('index')}}">
+                            <button>Data</button>
+                         </a></h2>
+                        <button onclick="exportToExcel('table-1', 'user-data')" class="btn btn-success">Export Table Data As CSV</button>
+                    </div>
+                    <input type="text" id="searchBox-2" placeholder="Search Here">
+                    <select id="searchBox-1">
+                        <option value="">All</option>
+                        <option value="Telecom">Telecom</option>
+                        <option value="IT">IT</option>
+                    </select>
+                    <table id="table-1">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h2>Vertical</h2>
+                                </th>
+                                <th>
+                                    <h2>Scope</h2>
+                                </th>
+                                <th>
+                                    <h2>Objective</h2>
+                                </th>
+                                <th>
+                                    <h2>Risk</h2>
+                                </th>
+                                <th>
+                                    <h2>Control</h2>
+                                </th>
+                                <th>
+                                    <h2>Test</h2>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</body>
+
+</html>
+<script>
+    const myJSON1 = JSON.parse({{ data | tojson}});
+    console.log(Object.values(myJSON1))
+    for (var i = 0; i < myJSON1.length; i++) {
+        var row = `<tr>
+                    <td><input type="checkbox" id="${i}" name="${i}" value="${i}"></td>
+                    <td><label for="${i}">${(myJSON1[i]['Vertical'])}</label></td>
+                    <td><label for="${i}">${(myJSON1[i]['Scope'])}</label></td>
+                    <td><label for="${i}">${(myJSON1[i]['Objective'])}</label></td>
+                    <td><label for="${i}">${(myJSON1[i]['Risk'])}</label></td>
+                    <td><label for="${i}">${(myJSON1[i]['Control'])}</label></td>
+                    <td><label for="${i}">${(myJSON1[i]['Test'])}</label></td>
+                  </tr>`
+        document.getElementById("myTable").innerHTML += row;
+    }
+    var searchBox_1 = document.getElementById("searchBox-1");
+    searchBox_1.addEventListener("click", function () {
+        var keyword = this.value;
+        keyword = keyword.toUpperCase();
+        var table_1 = document.getElementById("table-1");
+        var all_tr = table_1.getElementsByTagName("tr");
+        for (var i = 0; i < all_tr.length; i++) {
+            var name_column = all_tr[i].getElementsByTagName("td")[1];
+            if (name_column) {
+                var name_value = name_column.textContent || name_column.innerText;
+                name_value = name_value.toUpperCase();
+                if (name_value.indexOf(keyword) > -1) {
+                    all_tr[i].style.display = ""; // show
+                } else {
+                    all_tr[i].style.display = "none"; // hide
+                }
+            }
+        }
+    });
+    var searchBox_2 = document.getElementById("searchBox-2");
+searchBox_2.addEventListener("keyup",function(){
+	var keyword = this.value;
+	keyword = keyword.toUpperCase();
+	var table_2 = document.getElementById("table-1");
+	var all_tr = table_2.getElementsByTagName("tr");
+	for(var i=0; i<all_tr.length; i++){
+			var name_column = all_tr[i].getElementsByTagName("td")[2];
+		  var email_column = all_tr[i].getElementsByTagName("td")[2];
+			if(name_column && email_column){
+				var name_value = name_column.textContent || name_column.innerText;
+				var email_value = email_column.textContent || email_column.innerText;
+				name_value = name_value.toUpperCase();
+				email_value = email_value.toUpperCase();
+				if((name_value.indexOf(keyword) > -1) || (email_value.indexOf(keyword) > -1)){
+					all_tr[i].style.display = ""; // show
+				}else{
+					all_tr[i].style.display = "none"; // hide
+				}
+			}
+		}
+})
+
+
+</script>
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+<script type="text/javascript">
+    function exportToExcel(tableID, filename = '') {
+        var downloadurl;
+        var dataFileType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTMLData = tableSelect.outerHTML.replace(/ /g, '%20');
+
+        // Specify file name
+        filename = filename ? filename + '.xls' : 'export_excel_data.xls';
+
+        // Create download link element
+        downloadurl = document.createElement("a");
+
+        document.body.appendChild(downloadurl);
+
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['\ufeff', tableHTMLData], {
+                type: dataFileType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadurl.href = 'data:' + dataFileType + ', ' + tableHTMLData;
+
+            // Setting the file name
+            downloadurl.download = filename;
+
+            //triggering the function
+            downloadurl.click();
+        }
+    }
+
+</script>

@@ -1,0 +1,39 @@
+Vertical,Scope,Objective,Risk,Control,Test
+Telecom,Policies & Procedures,"To ensure the existence of approved policies,  process and guidelines for network planning & design, O&M, optimization & deployments","Absence of approved policy , process and guidelines  may lead to risk of inconsistent practices being followed based on individual experience, which may effect the operational efficiency and service quality.","Policies,  process and guidelines for  network planning & design, O&M, optimization & deployments should be adequately developed, approved by management, communicated to the stakeholders and periodically updated.","1. Obtain approved policy, process and guidelines for network planning & design, O&M, optimization & deployments
+2. Verify whether the policy, process and guidelines are adequate or not.
+3.  Verify whether policy, process and guideline documents were approved by the management in line with Authority Matrix and are periodically reviewed/updated by concerned team.
+4. Verify whether the policy, process and guideline documents are communicated/accessable to relevant stakeholders or not for compliance."
+Telecom,Preventive maintenace,To ensure the presence of effective controls for adequate execution network preventive maintenance.,Absence of Preventive Maintenance (PM)  process & policy documents and/or inadequate PM may lead to may lead to network degradation resulting in unwanted outages.,"1. Approved policy/process exists for  network maintenace.
+2. Preventive maintenance/health check schedule should be prepared, approved & executed for all applicable nodes/OFC routes as per the PM policy/process documents. ","1. Obtain field preventive maintenance schedule planned/approved for  network nodes/OFC routes for the period (MENTION PERIOD) and verify whether it is compliant to the relevant policy & process documents or not.
+2. Verify whether there is periodic field PM of network nodes and OFC network as per the PM plan.
+3. Obtain the site PM checklist and/or sample field PM report and verify the adequacy of PM exercise.
+4. Validate the periodic health check reports conducted remotely as a part of PM from NOC for its adequacy.
+5. Perform walkthrough of the PM tool to validate the following-
+- Archiving of PM reports
+- Timely opening & closure of PM tickets/SLA for closing PM tickets with escalation matrix
+- Execution of PM as per schedule.
+6. Visit sample sites and check the site register to verify whether field team physically visited the site or not as per the PM schedule."
+Telecom,Change management,To ensure the existence of effective change management process & practice. ,"1. Absence/inadequate Change Management (CM) process may lead to unauthorized changes in network resulting in outages and/or performance degradations. 
+2. Absence of automation in change management may lead to no/inadequate recording of change logs resulting.
+3. Risk of higher number of emergency network changes 
+4. Inadequate validation & approval of change requests may lead to unauthorized changes in network resulting in outages and/or performance degradations","1. Approved policy/process exists for  network changes.
+2.Change Management approval matrix is followed for performing changes over Network elements
+3. Automation exists for recording changes","1. Review the existence of network change mangement process and validate its compliance.
+2. Determine the  existence of  an automated tool for handling the network change request lifecycle and perform walkthrough of the tool to verify the adequacy of the tool. 
+3. Obtain the DoA for approving CR.
+4. Obtain details/CRF form of sample CRFs and validate the following -
+   - adequacy of inputs
+   - availability and adequacy of impact analysis
+   - availability and adequacy of fall backplan
+   - accuracy of CR prioritization
+   - timely approval of CR
+    -CR approval done as per approved DoA or not
+5. Check whether performance analysis is done after any activity and before CRF closure or not.
+6. Obtain the change request dump for (MENTION PERIOD) & perform a monthly trend analysis on the count of emergency changes performed."
+Telecom,Network Drive Test & Benchmarking,To ensure that drive tests & network benchmarking are performed periodic to identify coverage gaps and optimize the same,"Failure to identify poor coverage zones, call drops, quality issues due to lack of periodic drive testing/benchmarking may lead to degraded network performance causing customer dissatisfaction & potential churn, thereby losing out to competitors.","Periodic drive tests and network benchmarking should be performed to identify  poor coverage zones, call drops, quality issues in network.","1. Obtain and review Drive Test tracker, for the period (MENTION PERIOD),  to validate Drive Tests were conducted periodically for network optimizaton requirements.
+2. Obtain sample drive test reports (like highway drives, cluster drives etc) with pre-post reports (including the actions performed for optimization) and determine the improvement in network performance.
+3. Obtain sample benchmarking reports (drive test based) and determine the comparative network service quality with competitors for the period Jan (MENTION PERIOD)
+4. Obtain sample crowdsourcing reports and perform walkthrough of crowdsourcing tool for verification of network analytics avaiable with MNO to gauge customer experience, comaparative network quality (with competitors) and identification of network coverage gaps.
+"
+IT,Data Classfication,To ascertain if the data privacy risk assessment is done comprehensively to obtain an accurate data classification and the same is documented as well as monitored.,Non compliance to data classification procedure in systems and databases containing PII can lead to non-priortizing of sensitve information protection measures.,Periodic data privacy risk asseements are conducted to ensure accurate data classification,"1. Verify if a comprehensive and approved data classification policy exists and covers information asset identification and classification requirements (like inventory of assets, ownership of assets and classification guidelines) 
+2. Select sample systems to review the process of data classification and determine if data has been classified correctly as per the data classification policy."

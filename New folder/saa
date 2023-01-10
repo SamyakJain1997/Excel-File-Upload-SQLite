@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Mark Row
+            </th>
+            <th>
+                Vertical
+            </th>
+            <th>
+                Scope
+            </th>
+            <th>
+                Objective
+            </th>
+            <th>
+                Risk
+            </th>
+            <th>
+                Control
+            </th>
+            <th>
+                Test
+            </th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#example').DataTable({
+        scrollY: '790px',
+        scrollCollapse: true,
+        paging: false,
+    });
+});
+
+const myJSON1 = JSON.parse({{ data | tojson}});
+    for (var i = 0; i < myJSON1.length; i++) {
+        var row = `<tr onclick='checkuncheck(this)'>
+                    <td><input type="checkbox" id="${i}""></td>
+                    <td>${(myJSON1[i]['Vertical'])}</td>
+                    <td>${(myJSON1[i]['Scope'])}</td>
+                    <td>${(myJSON1[i]['Objective'])}</td>
+                    <td>${(myJSON1[i]['Risk'])}</td>
+                    <td>${(myJSON1[i]['Control'])}</td>
+                    <td>${(myJSON1[i]['Test'])}</td>
+                  </tr>`
+        document.getElementById("myTable").innerHTML += row;
+    }
+</script>

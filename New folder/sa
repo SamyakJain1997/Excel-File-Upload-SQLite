@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+
+<body>
+    <div id="here">
+        <table style="width:100%" id="table_download">
+            <thead style="display: none;">
+                <tr>
+                    <th>
+                        <h2>Markup</h2>
+                    </th>
+                    <th>
+                        <h2>Vertical</h2>
+                    </th>
+                    <th>
+                        <h2>Scope</h2>
+                    </th>
+                    <th>
+                        <h2>Objective</h2>
+                    </th>
+                    <th>
+                        <h2>Risk</h2>
+                    </th>
+                    <th>
+                        <h2>Control</h2>
+                    </th>
+                    <th>
+                        <h2>Test</h2>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="myTable_download">
+                <tr>
+                <td id="col1"></td>
+                <td id="col2"></td>
+                <td id="col3"></td>
+                <td id="col4"></td>
+                <td id="col5"></td>
+                <td id="col6"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button onclick="myFunction()">Click me</button>
+    <button onclick="exportToExcel('table_download', 'user-data')" class="btn btn-success">Export Table Data As CSV</button>
+    <table style="width:100%" id="table">
+        <thead>
+            <tr>
+                <th>
+                    <h2>Markup</h2>
+                </th>
+                <th>
+                    <h2>Vertical</h2>
+                </th>
+                <th>
+                    <h2>Scope</h2>
+                </th>
+                <th>
+                    <h2>Objective</h2>
+                </th>
+                <th>
+                    <h2>Risk</h2>
+                </th>
+                <th>
+                    <h2>Control</h2>
+                </th>
+                <th>
+                    <h2>Test</h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+        </tbody>
+    </table>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+    <script>
+        const myJSON1 = JSON.parse({{ data | tojson}});
+        console.log(Object.values(myJSON1))
+        for (var i = 0; i < myJSON1.length; i++) {
+            var row = `<tr>
+                    <td><input class="checkMe" type="checkbox" />    </td>
+                    <td>${(myJSON1[i]['Vertical'])}</td>
+                    <td>${(myJSON1[i]['Scope'])}</td>
+                    <td>${(myJSON1[i]['Objective'])}</td>
+                    <td>${(myJSON1[i]['Risk'])}</td>
+                    <td>${(myJSON1[i]['Control'])}</td>
+                    <td>${(myJSON1[i]['Test'])}</td>
+                  </tr>`
+            document.getElementById("myTable").innerHTML += row;
+        }
+    </script>
+    <script type="text/javascript">
+
+        function myFunction() {
+            var checks = document.getElementsByClassName('checkMe');
+            var table = document.getElementById('myTable')
+
+            var element = document.getElementById("here");
+            for (var i = 0; i < table.rows.length; i++) {
+                if (checks.item(i).checked == true) {
+                    var Vertical = table.rows[i].cells[1].innerHTML; //first column  
+                    var Scope = table.rows[i].cells[2].innerHTML; //first column  
+                    var Objective = table.rows[i].cells[3].innerHTML; //first column  
+                    var Risk = table.rows[i].cells[4].innerHTML; //first column  
+                    var Control = table.rows[i].cells[5].innerHTML; //first column  
+                    var Test = table.rows[i].cells[6].innerHTML; //first column  
+                    var para = document.createElement("p");
+                    var node = document.createTextNode(Vertical+Scope +Objective +Risk +Control +Test);
+                    para.appendChild(node);
+
+                    element.appendChild(para);
+                }
+            }
+            var col1 = document.getElementById("col1");
+            for (var i = 0; i < table.rows.length; i++) {
+                if (checks.item(i).checked == true) {
+                    var Vertical = table.rows[i].cells[1].innerHTML; //first column  
+                    var para1 = document.createElement("p");
+                    var node = document.createTextNode(Vertical);
+                    para1.appendChild(node);
+
+                    element.appendChild(para1);
+                }
+            }
+            var col2 = document.getElementById("col2");
+            for (var i = 0; i < table.rows.length; i++) {
+                if (checks.item(i).checked == true) {
+                    var Scope = table.rows[i].cells[2].innerHTML; //first column  
+                    var para = document.createElement("p");
+                    var node = document.createTextNode(Scope);
+                    para.appendChild(node);
+
+                    element.appendChild(para);
+                }
+            }
+            var col3 = document.getElementById("col3");
+            for (var i = 0; i < table.rows.length; i++) {
+                if (checks.item(i).checked == true) {
+                    var Objective = table.rows[i].cells[3].innerHTML; //first column  
+                    var para = document.createElement("p");
+                    var node = document.createTextNode(Objective);
+                    para.appendChild(node);
+
+                    element.appendChild(para);
+                }
+            }
+            var col4 = document.getElementById("col4");
+            for (var i = 0; i < table.rows.length; i++) {
+                if (checks.item(i).checked == true) {
+                    var Risk = table.rows[i].cells[4].innerHTML; //first column  
+                    var para = document.createElement("p");
+                    var node = document.createTextNode(Risk);
+
+                    para.appendChild(node);
+
+                    element.appendChild(para);
+                }
+            }
+            var col5 = document.getElementById("col5");
+            for (var i = 0; i < table.rows.length; i++) {
+                if (checks.item(i).checked == true) {
+                    var Control = table.rows[i].cells[5].innerHTML; //first column  
+                    var Test = table.rows[i].cells[6].innerHTML; //first column  
+                    var para = document.createElement("p");
+                    var node = document.createTextNode(Control);
+                    para.appendChild(node);
+
+                    element.appendChild(para);
+                }
+            }
+            var col6 = document.getElementById("col6");
+            for (var i = 0; i < table.rows.length; i++) {
+                if (checks.item(i).checked == true) {
+                    var Test = table.rows[i].cells[6].innerHTML; //first column  
+                    var para = document.createElement("p");
+                    var node = document.createTextNode(Test);
+                    para.appendChild(node);
+
+                    element.appendChild(para);
+                }
+            }
+        };
+        function exportToExcel(tableID, filename = '') {
+            var downloadurl;
+            var dataFileType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTMLData = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'export_excel_data.xls';
+    
+            // Create download link element
+            downloadurl = document.createElement("a");
+    
+            document.body.appendChild(downloadurl);
+    
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', tableHTMLData], {
+                    type: dataFileType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadurl.href = 'data:' + dataFileType + ', ' + tableHTMLData;
+    
+                // Setting the file name
+                downloadurl.download = filename;
+    
+                //triggering the function
+                downloadurl.click();
+            }
+        }
+    
+    </script>
+
+</body>
+
+</html>

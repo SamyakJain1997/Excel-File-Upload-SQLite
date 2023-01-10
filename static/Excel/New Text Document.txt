@@ -1,0 +1,1015 @@
+unique db central db filter on clear is showing some other value
+central db count 2nd card
+TableName word refrence also
+gst update ui ishaan
+UI update for database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+state wise
+product wise
+renewal expiry ongoing pie chart
+renewal month
+total customer count
+city wise
+
+top 10 customers
+enter you membership id and then show data according to it
+
+
+1. login register page design
+2. dashboard design
+3. additional block karke ek coloumn bnao jisme new graph ke liye aaye
+4.dashboard add pannel, refresh button, user name reflect and user type reflect.
+5. Dark Theme to be used.
+
+
+1. year wise count of unique cust
+2. graph starting from year for diffrent type of cust year wise
+3. unique customer and when did each customer join(table form)
+4. top 40 old customers
+
+
+
+
+last 15 days count and data query done
+
+
+
+
+27 oct task
+api calling
+if user == admin then navabar add option signup ( add emplyee)
+top pannel of dashboard all dynamic
+drop down == admin, user
+
+
+
+
+
+
+31 oct
+ cutomer wise if he was in any year or not
+
+
+9 nov
+aispl sales_db 
+total sales with tax and without tax
+am coloumn sales cmplt
+am wise monthly wise
+oem coloumn
+vendor coloumn
+sales month coloumn
+sales year coloumn
+customer coloumn
+product coloumn
+
+
+
+11 nov
+distinct all table program type coloumn should be visible as well
+ui asipl_id prog_type cust_name product anniversary_year
+sales_db am coloumn top 15 show and view all button in graph and on click all 63 sales records shud show
+total entry card shud show completee table
+oem wise sales vendor sales financial year wise sale
+
+
+
+
+
+
+
+
+
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Chart.js Example</title>
+    <!-- import plugin script -->
+    <script src='static/Chart.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <script src="https://raw.githubusercontent.com/google/palette.js/master/palette.js"></script>
+  </head>
+  <body>
+    <h1>Simple Bar Chart</h1>
+    
+    <script>
+      async function linechart(e) {
+        console.log("Hello");
+        let response = await fetch('/chartdata?c='+e);
+        let data = await response.json()
+        console.log(data);
+      }
+      // function fetchMovies(e){
+      //   fetch('/chartdata?c='+e)
+      //   .then((response) => response.json())
+      //   .then((data) => console.log(data));
+      // }
+      async function donought(e) {
+        console.log("Hello");
+        let response = await fetch('/chartdata?c='+e);
+        let data = await response.json()
+        console.log(data);
+      }
+      linechart('TEST');
+      donought('CITY_DATA');
+      // fetchMovies('STATE_DATA');
+      // fetchMovies('CUSTOMER_COUNT');
+    </script>
+
+  </body>
+</html>
+
+<!-- <script>
+    var out_html = '';
+    const myJSON1 = JSON.parse({{ final_data | tojson}});
+    var keys = Object.keys(myJSON1);
+    var out_html1 = '';
+    const myJSON11 = JSON.parse({{ final_list1 | tojson}});
+    var keys11 = Object.keys(myJSON11);
+
+    for (let i = 0; i < 14; i++) {
+      out_html = Object.values(myJSON1[i]);
+      out_html1 = Object.values(myJSON11[i]);
+      myChart.data.datasets[0].data.push(out_html);
+      myChart.data.labels.push(out_html1);
+      myChart.update();
+    }
+</script> -->
+
+
+SQL COMMANDS
+
+
+-- SELECT count(DISTINCT unit_price) FROM aisplcdb.adobe_cdb LIMIT 1;
+-- SELECT COUNT(DISTINCT deploy_to_city) FROM aisplcdb.adobe_cdb as deploy_to_city_count;
+-- SELECT COUNT(DISTINCT deploy_to_city) FROM aisplcdb.adobe_cdb WHERE deploy_to_city = "DELHI";
+-- SELECT COUNT(DISTINCT deploy_to_city) FROM aisplcdb.adobe_cdb;
+-- SELECT COUNT(DISTINCT deploy_to_state) FROM aisplcdb.adobe_cdb WHERE deploy_to_city = "DELHI";
+-- SELECT COUNT(DISTINCT deploy_to_city) FROM aisplcdb.adobe_cdb LIMIT 10;
+-- SELECT COUNT(DISTINCT aispl_id) FROM adobe_cdb LIMIT 1;
+-- SELECT deploy_to_city FROM aisplcdb.adobe_cdb GROUP BY deploy_to_city LIMIT 100;
+-- SELECT COUNT(DISTINCT deploy_to_city) FROM aisplcdb.adobe_cdb;
+-- SELECT membership_number, COUNT(*) FROM aisplcdb.adobe_cdb GROUP BY membership_number;
+-- SELECT deploy_to_city, COUNT(*) FROM   aisplcdb.adobe_cdb GROUP BY deploy_to_city ORDER BY COUNT(*) DESC;  
+-- SELECT COUNT(DISTINCT aispl_id) FROM aisplcdb.adobe_cdb;
+-- SELECT COUNT(program_type) FROM aisplcdb.adobe_cdb GROUP BY program_type;
+-- SELECT FORMAT(SUM(unit_price), '#########.##') AS '#########.##' FROM aisplcdb.adobe_cdb;
+-- SELECT * FROM aisplcdb.adobe_cdb LIMIT 10;
+-- select year(adobe_order_date) as yyyy,sum(case when stat = 1 and id = 16 then 1 else 0 end) as cnt_16 from aisplcdb.adobe_cdb group by year(adobe_order_date) order by yyyy;
+-- SELECT EXTRACT(year FROM adobe_order_date) AS year FROM aisplcdb.adobe_cdb GROUP BY EXTRACT(year FROM adobe_order_date);
+-- SELECT COUNT(adobe_order_date) FROM aisplcdb.adobe_cdb WHERE adobe_order_date = '02-Sep-18';
+-- SELECT YEAR(adobe_order_date),COUNT(*) FROM aisplcdb.adobe_cdb GROUP BY YEAR(adobe_order_date);
+-- SELECT adobe_order_date, COUNT(*) FROM aisplcdb.adobe_cdb GROUP BY YEAR(adobe_order_date) ORDER BY COUNT(*) DESC;
+-- select adobe_order_date, COUNT(*) from aisplcdb.adobe_cdb WHERE YEAR(adobe_order_date) in(2020,2021);
+-- select year(adobe_order_date) as yyyy,sum(case when stat = 1 and id = 16 then 1 else 0 end) as cnt_16 from aisplcdb.adobe_cdb group by year(adobe_order_date) order by yyyy;
+-- select adobe_order_date,aispl_id from aisplcdb.adobe_cdb WHERE YEAR(adobe_order_date) in(2013,2015)
+-- SELECT id FROM oneaispl_portal_subscriptions WHERE aispl_end_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 15 DAY)
+-- SELECT COUNT(*) FROM aisplcdb.adobe_cdb WHERE YEAR(adobe_order_date) = '12' GROUP BY  MONTH(adobe_order_date);
+-- SELECT adobe_order_date, COUNT(*) FROM aisplcdb.adobe_cdb GROUP BY (adobe_order_date) ORDER BY COUNT(*) DESC;
+-- SELECT adobe_order_date, COUNT(*) FROM aisplcdb.adobe_cdb GROUP BY (adobe_order_date) ORDER BY COUNT(*) DESC;
+-- select * from oneaispl_portal_subscriptions where aispl_end_date> now() - INTERVAL 15 day LIMIT 10;
+-- SELECT * FROM aisplcdb.adobe_cdb LIMIT 10;
+-- SELECT current_anniversary_date, product_name,deploy_to_email, end_user_id from aisplcdb.adobe_cdb where current_anniversary_date> now() - INTERVAL 15 day LIMIT 50;
+-- select * from oneaispl_portal_subscriptions LIMIT 10;
+-- SELECT * FROM aisplcdb.aispl_ms_sales LIMIT 10;
+-- SELECT COUNT(*), YEAR(sales_date) FROM aisplcdb.aispl_ms_sales GROUP BY YEAR(sales_date);
+-- SELECT COUNT(*), YEAR(current_anniversary_date) FROM aisplcdb.adobe_cdb GROUP BY YEAR(current_anniversary_date) WHERE current_anniversary_date IS NOT NULL;
+-- SELECT COUNT(*), YEAR(current_anniversary_date)FROM aisplcdb.adobe_cdb WHERE current_anniversary_date IS NOT NULL GROUP BY YEAR(current_anniversary_date) ORDER BY YEAR(current_anniversary_date) DESC;
+-- SELECT COUNT(*), MONTH(sales_date)FROM aisplcdb.aispl_ms_sales WHERE sales_date IS NOT NULL GROUP BY MONTH(sales_date) ORDER BY MONTH(sales_date) ASC;
+-- SELECT COUNT(*), end_customer_sales_territory FROM aisplcdb.aispl_ms_sales WHERE end_customer_sales_territory IS NOT NULL GROUP BY end_customer_sales_territory ORDER BY end_customer_sales_territory DESC;
+-- SELECT COUNT(*), reported_subsegment FROM aisplcdb.aispl_ms_sales WHERE reported_subsegment IS NOT NULL GROUP BY reported_subsegment;
+-- SELECT program_type,COUNT(DISTINCT aispl_id) FROM aisplcdb.adobe_cdb GROUP BY program_type ORDER BY COUNT(DISTINCT aispl_id) DESC;
+-- SELECT current_anniversary_date, product_name,deploy_to_email, end_user_id from aisplcdb.adobe_cdb where current_anniversary_date> now() - INTERVAL 15 day LIMIT 50;
+-- SELECT current_anniversary_date, product_name,deploy_to_email, end_user_id from aisplcdb.adobe_cdb where current_anniversary_date> NOW() - INTERVAL 15 day;
+-- SELECT COUNT(DISTINCT end_customer_organization_id) FROM aisplcdb.aispl_ms_sales;
+-- SELECT deploy_to_state, COUNT(deploy_to_state) FROM aisplcdb.adobe_cdb GROUP BY deploy_to_state ORDER BY COUNT(deploy_to_state) DESC;
+-- SELECT current_anniversary_date, product_name,deploy_to_email, end_user_id from aisplcdb.adobe_cdb where current_anniversary_date> now() AND current_anniversary_date <= now()+15 LIMIT 10;
+-- SELECT CURRENT_DATE;
+-- SELECT current_anniversary_date from aisplcdb.adobe_cdb WHERE current_anniversary_date = CURRENT_DATE + 400;
+-- SELECT * from aisplcdb.adobe_cdb GROUP BY current_anniversary_date LIMIT 10;
+-- DESCRIBE aisplcdb.adobe_cdb;
+--  select * from aisplcdb.adobe_cdb order by convert(datetime,current_anniversary_date) desc
+-- SELECT current_anniversary_date FROM adobe_cdb WHERE current_anniversary_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 15 DAY);
+-- SELECT * from aisplcdb.aispl_ms_sales LIMIT 10;
+-- SELECT fiscal_quarter, fiscal_month,sales_date, end_customer_organization_name from aisplcdb.aispl_ms_sales WHERE sales_date BETWEEN "2020/09/01" AND DATE_ADD("2020/09/01", INTERVAL 45 DAY) is NOT NULL;
+-- SELECT COUNT(DISTINCT current_anniversary_date), YEAR(current_anniversary_date) FROM aisplcdb.adobe_cdb WHERE current_anniversary_date IS NOT NULL GROUP BY YEAR(current_anniversary_date) ORDER BY YEAR(current_anniversary_date) DESC;
+-- SELECT COUNT(DISTINCT current_anniversary_date), COUNT(current_anniversary_date) from aisplcdb.adobe_cdb WHERE current_anniversary_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 15 DAY);
+-- SELECT COUNT(current_anniversary_date) from aisplcdb.adobe_cdb WHERE current_anniversary_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 15 DAY);
+-- SELECT program_type, product_name,deploy_to_email, end_user_id from aisplcdb.adobe_cdb WHERE program_type = VIP;
+-- SELECT DISTINCT aispl_id, end_user_id,end_user_name,membership_number from aisplcdb.adobe_cdb WHERE program_type = 'VIP' LIMIT 100;
+-- SELECT current_anniversary_date, program_type, product_name,deploy_to_email, end_user_id from aisplcdb.adobe_cdb WHERE current_anniversary_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 15 DAY) ORDER BY current_anniversary_date ASC;
+-- SELECT (COUNT(DISTINCT aispl_id) - COUNT(current_anniversary_date)) FROM aisplcdb.adobe_cdb;
+-- SELECT COUNT(DISTINCT aispl_id) FROM aisplcdb.adobe_cdb;
+-- SELECT (SELECT COUNT(DISTINCT aispl_id) FROM aisplcdb.adobe_cdb)-(SELECT COUNT(current_anniversary_date) from aisplcdb.adobe_cdb WHERE current_anniversary_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 15 DAY));
+-- SELECT * FROM aisplcdb.adobe_cdb GROUP BY aispl_id;
+-- SELECT aispl_id FROM aisplcdb.adobe_cdb GROUP BY aispl_id;
+-- SELECT count(am), am FROM aisplcdb.aispl_sales_db WHERE am IS NOT NULL GROUP BY am ORDER BY COUNT(am) desc;
+-- SELECT COUNT(*) FROM aisplcdb.aispl_sales_db
+-- SELECT ordertype , COUNT(*) FROM aisplcdb.aispl_sales_db GROUP BY ordertype;
+-- SELECT ordertype , COUNT(DISTINCT ordertype) FROM aisplcdb.aispl_sales_db WHERE ordertype IS NOT NULL GROUP BY ordertype;
+-- SELECT COUNT(*), oem FROM aisplcdb.aispl_sales_db WHERE oem IS NOT NULL GROUP BY oem ORDER BY count(*) DESC;
+
+-- SELECT COUNT(*), am FROM aisplcdb.aispl_sales_db WHERE am IS NOT NULL GROUP BY am ORDER BY COUNT(*) DESC;
+-- SELECT full_name FROM FullName WHERE full_name IS NOT NULL;
+-- SELECT COUNT(*) FROM aisplcdb.aispl_sales_db;
+-- SELECT full_name FROM FullName;
+-- SELECT customer_tenant_id, email, phoneNumber, created_at FROM oneaispl_portal_customers;
+-- SELECT COUNT(*), vendor FROM aisplcdb.aispl_sales_db GROUP BY vendor ORDER BY count(*) DESC;
+-- SELECT ordertype , COUNT(*) FROM aisplcdb.aispl_sales_db WHERE ordertype IS NOT NULL GROUP BY ordertype
+-- SELECT LTRIM(ordertype),COUNT(*) FROM aisplcdb.aispl_sales_db GROUP BY ordertype;
+-- SELECT COUNT(*), am FROM aisplcdb.aispl_sales_db GROUP BY am ORDER BY COUNT(*) DESC;
+-- SELECT * FROM aisplcdb_dev.aispl_adobe_distinct_all limit 10;
+-- select count(current_anniversary_date) from aisplcdb.adobe_cdb WHERE current_anniversary_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 15 DAY)
+
+-- show TABLES;
+-- SELECT * FROM oneaispl_portal_customers LIMIT 10
+-- INSERT INTO FullName (phoneNumber, email)
+-- SELECT phoneNumber,email FROM oneaispl_portal_customers
+-- WHERE email is NOT NULL;
+-- SELECT * from FullName
+-- SELECT ordertype , COUNT(*) FROM aisplcdb.aispl_sales_db WHERE ordertype IS NOT NULL GROUP BY ordertype;
+-- aisplcdb.aispl_sales_db description;
+-- SELECT RTRIM(ordertype),COUNT(*) FROM aisplcdb.aispl_sales_db GROUP BY ordertype;
+-- UPDATE aisplcdb.aispl_sales_db SET ordertype = RTRIM(ordertype)
+-- SELECT ordertype , COUNT(*) FROM aisplcdb.aispl_sales_db GROUP BY ordertype;
+-- SELECT COUNT(current_anniversary_date) from aisplcdb.adobe_cdb WHERE current_anniversary_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 15 DAY)
+-- SELECT * FROM aisplcdb_dev.aispl_adobe_distinct limit 10;
+-- SELECT * FROM aisplcdb_dev.aispl_adobe_distinct_all WHERE program_type LIKE '%VIP%' LIMIT 10
+-- SELECT * FROM aisplcdb_dev.aispl_adobe_distinct_all WHERE program_type = "['VIP']" LIMIT 10
+-- SELECT user_id, name, password, email_id, contact, department, user_type from aisplcdb_ui.users
+-- ALTER TABLE aisplcdb_ui.users RENAME COLUMN contact TO contact_no;
+-- SELECT * FROM aisplcdb_ui.users
+-- ALTER TABLE aisplcdb_ui.users MODIFY contact_no INT;
+-- SELECT CAST(column_name AS INT) from table_name
+-- SELECT TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME,COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = 'users'and COLUMN_NAME = 'email_id'
+-- ALTER TABLE aisplcdb_ui.users MODIFY contact_no text;
+-- SELECT * FROM aisplcdb_ui.users
+-- SELECT * FROM aisplcdb_dev.aispl_adobe_distinct_all WHERE (program_type REGEXP 'VIP') LIMIT 10;
+-- DELETE from aisplcdb_ui.users WHERE user_id = "ishaan1234"
+-- SELECT * FROM aisplcdb.aispl_central_db_test WHERE gstin IS NOT NULL LIMIT 10;
+
+
+-- SELECT count(DISTINCT customer_city) from aisplcdb.aispl_central_db_test WHERE customer_city IS NOT NULL
+-- SELECT count(DISTINCT product_name) from aisplcdb.aispl_central_db_test WHERE product_name IS NOT NULL;
+-- SELECT COUNT(*), oem FROM aisplcdb.aispl_central_db_test WHERE oem IS NOT NULL GROUP BY oem ORDER BY COUNT(*) DESC;
+-- SELECT COUNT(gstin) FROM aisplcdb.aispl_central_db_test WHERE gstin IS NOT NULL;
+-- UPDATE aisplcdb_ui.users SET name = '1', password = '1' WHERE user_id = 'testptech' ;
+-- UPDATE aisplcdb_ui.users SET name = 'sam', password = 'sa', email_id = 'samjain@gmail.com', contact_no = '123456', department = 'dev', user_type = 'admin', WHERE user_id = 'testptech';
+-- SELECT * FROM aisplcdb_dev.aispl_adobe_distinct WHERE (program_type REGEXP 'VIP') LIMIT 10
+-- SELECT COUNT(*) FROM aisplcdb_dev.aispl_adobe_distinct WHERE (program_type REGEXP 'VIP')  AND (deploy_to_city REGEXP ('NOIDA'))
+-- SELECT user_id,name, password,contact_no, email_id,department,user_type from aisplcdb_ui.users;
+-- SELECT COUNT(*) from aisplcdb.adobe_cdb WHERE current_anniversary_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 15 DAY)
+-- SELECT * FROM aisplcdb_ui.user
+-- SELECT COUNT(*) FROM aisplcdb.aispl_central_db WHERE gstin IS NULL;
+-- SELECT COUNT(customer_phone) FROM aisplcdb.aispl_central_db WHERE customer_phone IS NOT NULL;
+-- SELECT COUNT(*) FROM aisplcdb_dev.aispl_adobe_distinct WHERE (subscription_end_year REGEXP '2021') AND (
+-- SELECT count(gstin) from aisplcdb.aispl_unique_customers  WHERE gstin = "None";
+-- SELECT count(DISTINCT aispl_cust_id) from aisplcdb.aispl_central_db WHERE aispl_cust_id IS NOT NULL;
+-- SELECT COUNT(*), vendor FROM aisplcdb.aispl_central_db WHERE vendor !='None' GROUP BY vendor ORDER BY COUNT(*) DESC
+-- SELECT * from aisplcdb.aispl_central_db  LIMIT 10;
+-- SELECT COUNT(customer_address), customer_address from aisplcdb.aispl_unique_customers GROUP BY customer_address ORDER BY COUNT(customer_address) DESC
+-- SELECT COUNT(customer_address) from aisplcdb.aispl_unique_customers WHERE customer_address = 'None'
+-- SELECT COUNT(customer_address) from aisplcdb.aispl_unique_customers WHERE customer_address != 'None'
+-- SELECT COUNT(customer_city) from aisplcdb.aispl_unique_customers WHERE customer_city = 'None';
+-- SELECT * FROM aisplcdb.aispl_central_db WHERE aispl_cust_id = "ACID1000000000000";
+-- SELECT * FROM aisplcdb.aispl_central_db WHERE aispl_cust_id = "ACID1000000000000"; limit 0,35
+-- SELECT * FROM aisplcdb.tally_data_db WHERE aispl_id = "{valuecheck}";
+
+
+
+ ("purchase_type","SELECT purchase_type,COUNT(*) FROM aisplcdb.aispl_ms_sales GROUP BY purchase_type;"),
+    ("fiscal_year","SELECT fiscal_year,COUNT(*) FROM aisplcdb.aispl_ms_sales GROUP BY fiscal_year;")
+("total_ms_cust","SELECT COUNT(*) FROM aisplcdb.aispl_ms_sales;")
+
+elif resp_data[0] == "purchase_type" :
+        data_dict = (get_data(query)[5])
+        data= data_dict.get("purchase_type")
+        legend = 'purchase_type'
+        labels = data.get("purchase_type")
+        values = data.get("COUNT(*)")
+        resp = {"values":values,"labels":labels,"legend":legend}
+    elif resp_data[0] == "fiscal_year" :
+        data_dict = (get_data(query)[6])
+        data= data_dict.get("fiscal_year")
+        legend = 'fiscal_year'
+        labels = data.get("fiscal_year")
+        values = data.get("COUNT(*)")
+        resp = {"values":values,"labels":labels,"legend":legend}
+elif resp_data[0] == "total_ms_cust" :
+        data_dict = (get_data(query)[4])
+        data= data_dict.get("total_ms_cust")
+        legend = 'total_ms_cust'
+        labels = ''
+        values = data.get("COUNT(*)")
+        resp = {"values":values,"labels":labels,"legend":legend}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="accessibility-outline"></ion-icon>
+            </span>
+            <span class="title">Absolute Company Pvt.Ltd.</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('home') }}">
+            <span class="icon">
+              <ion-icon name="home"></ion-icon>
+            </span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{url_for('dashboard') }}">
+            <span class="icon">
+              <ion-icon name="people"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{url_for('doughnut') }}">
+            <span class="icon">
+              <ion-icon name="people"></ion-icon>
+            </span>
+            <span class="title">Donought</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="help-circle"></ion-icon>
+            </span>
+            <span class="title">Help</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="cog"></ion-icon>
+            </span>
+            <span class="title">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('dropsession') }}">
+            <span class="icon">
+              <ion-icon name="log-out"></ion-icon>
+            </span>
+            <span class="title">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="toggle">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
+        <div class="user">
+          <img src="{{ url_for('static', filename='./images/login.jpg ') }}" alt="login_img">
+        </div>
+      </div>
+
+      <div class="cardBox">
+        <div class="card">
+          <div>
+            <div class="numbers" id="demo1"></div>
+            <div class="cardName">Total Customers</div>
+          </div>
+          <div class="iconBx">
+            <ion-icon name="eye-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="numbers">0</div>
+            <div class="cardName">Sales</div>
+          </div>
+          <div class="iconBx">
+            <ion-icon name="cart-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="numbers">0</div>
+            <div class="cardName">Renewals</div>
+          </div>
+          <div class="iconBx">
+            <ion-icon name="briefcase-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="numbers">0</div>
+            <div class="cardName">Earnings</div>
+          </div>
+          <div class="iconBx">
+            <ion-icon name="cash-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="graphBox">
+        <div class="box">
+          <canvas id="donought"></canvas>
+        </div>
+        <div class="box">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <!-- <script src="{{ url_for('static', filename='./js/bar_chart.js') }}"></script> -->
+
+
+
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [{
+          label: '# of Votes',
+          data: [],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+</script>
+<script>
+  async function linechart(e) {
+    console.log("Hello");
+    let response = await fetch('/chartdata?c=' + e);
+    let data = await response.json()
+    for (let i = 0; i <10; i++) {
+      myChart.data.datasets[0].data.push(data.values[i]);
+      myChart.data.labels.push(data.labels[i]);
+      myChart.update();
+    }
+  }
+  linechart('TEST');
+</script>
+
+
+  <!-- navbar click -->
+  <script>
+    let toggle = document.querySelector('.toggle');
+    let navigation = document.querySelector('.navigation');
+    let main = document.querySelector('.main');
+
+    toggle.onclick = function () {
+      navigation.classList.toggle('active');
+      main.classList.toggle('active');
+    }
+
+    let list = document.querySelectorAll('.navigation li');
+    function activeLink() {
+      list.forEach((items) =>
+        items.classList.remove('hovered'));
+      this.classList.add('hovered');
+    }
+    list.forEach((item) =>
+
+      item.addEventListener('mouseover', activeLink));
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+      <td onClick = console.log("ACID1000000000338")>ACID1000000000338</td>
+      <td>AISPL1000016171</td>
+      <td>S V PHOTOGRAPHIC</td>
+      <td>D-732, LOWER GROUND FLOOR CHITTARANJAN PARK</td>
+      <td>NEW DELHI</td>
+      <td>SATISH LUTHRA</td>
+      <td>info@svphotographic.com</td>
+      <td>91-11-41603702</td>
+      <td>Photoshop</td>
+      <td>Adobe</td>
+      <td>Adobe</td>
+      <td>adobe_cdb</td>
+      <td>07AABPL4900D1ZA</td>
+      <td>svphotographic.com</td>
+    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.1/chart.min.js" integrity="sha512-2uu1jrAmW1A+SMwih5DAPqzFS2PI+OPw79OVLS4NJ6jGHQ/GmIVDDlWwz4KLO8DnoUmYdU8hTtFcp8je6zxbCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/main.css') }}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<title>AISPLCDB</title>
+
+<body>
+    <header>
+        <a href="{{ url_for('dashboard') }}" style="color:#4a1ee9;text-decoration: none;">
+            <p style="color:#4a1ee9;margin:15px 70px 15px 60px;"><i class="fa fa-bolt" aria-hidden="true"></i> AISPLCDB
+            </p>
+        </a>
+        <p>Database: </p>
+        <select onchange="selectDatabase(this.value)" class="database">
+            <option value="" selected disabled hidden>Choose Database</option>
+            <option value="aisplcdb">AISPLCDB</option>
+            <option value="aisplcdb_dev">AISPLCDB_dev</option>
+        </select>
+        <p><a href="{{url_for('dashboard') }}">Dashboard</a></p>
+        <p class="header"></p>
+        <p class="download" onClick="downloadFile()"></p>
+        <p class="clearFilter" onClick="clearFilter()"></p>
+        <p class="logout" onClick="logout()" style="position: absolute; top:2px;left:92%; margin: 15px 0px 15px 15px;"><a href="{{ url_for('dropsession') }}" style="color:black;text-decoration: none;">Logout <i
+                    style="color:#4a1ee9;padding-left:5px" class="fa fa-sign-out" aria-hidden="true"></i></a></p>
+        <!-- <p class="globalSearch" style="position: absolute; top:-1px;left:77.8%" ><input name="form" class="globalfilter" type="text" autocomplete="off"
+            placeholder="Global filter" /></p> -->
+            
+    </header>
+    <nav class="tableNames"></nav>
+    <div class="tableInfo"></div>
+    <div class="terminal-window">
+
+        <table class="table123">
+            <thead>
+                <tr class="headersOfTable"></tr>
+            </thead>
+            <thead>
+                <tr class="iconsOfTable"></tr>
+            </thead>
+
+            <tbody class="tablebody">
+            </tbody>
+
+        </table>
+        <div class="watcher"></div>
+        <div class="container">
+            <h1>Loading...</h1>
+        </div>
+    </div>
+</body>
+
+<script>
+    var search = document.querySelectorAll('.search');
+    let tableName = ""
+    let counter = 0;
+    let timeout = null;
+    var controller;
+    var redundantRequests = 0
+    window.userData = ["database", "table", "nocolumn", "noword", counter];
+    var table = document.querySelector('.tablebody');
+    watcher = document.querySelector(".watcher")
+    loader = document.querySelector(".container")
+
+    database = document.querySelector(".database")
+    function clearFilter() {
+        let tableName
+        if (window.userData[1] === 'aisplcdb') { tableName = "AISPLCDB" }
+        // else if (window.userData[1] === 'oneaispl_portal_customers') { tableName = "ONEAISPL CUSTOMER CDB" }
+        else { tableName = window.userData[1] }
+        tableSelect(window.userData[1], tableName)
+    }
+    function showSearchfilter(e) {
+        e.parentNode.parentNode.childNodes[1].childNodes[1].style.display = "block";
+    }
+    function showSearchdrop(e) {
+        e.parentNode.parentNode.childNodes[1].childNodes[3].style.display = "block";
+    }
+    async function loadItems() {
+
+        let response1 = await fetch(`/test_load?c=${window.userData}`)
+        let data1 = await response1.json().then(data1 => {
+
+            table.insertAdjacentHTML("beforeend", data1);
+            window.userData[4] += 35;
+            if (table.childNodes.length < 70) {
+                loader.style.display = "none"
+                watcher.style.display = "none";
+            }
+            else {
+                loader.style.display = "block"
+                watcher.style.display = "block";
+            }
+        })
+    }
+
+    async function selectDatabase(e) {
+
+        window.userData[0] = e;
+        let response = await fetch(`/database?c=${window.userData[0]}`)
+        let string = "";
+        let data = await response.json().then(data => {
+            main = data["Tables_in_" + e]
+            Object.keys(main).forEach(ele => {
+                let tableName
+                if (main[ele] === 'adobe_cdb') { tableName = "ADOBE DB" }
+                else if (main[ele] === 'oneaispl_portal_customers') { tableName = "ONEAISPL P CUST DB" }
+                else if (main[ele] === 'oneaispl_portal_subscriptions') { tableName = "ONEAISPL P SUBS DB" }
+                else { tableName = main[ele] }
+                string = string + `<p onclick='tableSelect("${main[ele]}","${tableName}")'><i class="fa fa-table" aria-hidden="true"></i>${tableName}</p>`
+            })
+            
+            string = string + ``
+            document.querySelector(".tableNames").innerHTML = string;
+        })
+    }
+
+
+    async function tableSelect(e, name) {
+        console.log(name)
+        document.querySelector(".terminal-window").style.display = "block"
+        if (name) { document.querySelector(".header").innerHTML = `TableName:   <span style="color:#FF083B;">${name}</span>` }
+        else { document.querySelector(".header").innerHTML = `TableName:   <span style="color:#FF083B;">${e}</span>` }
+
+        document.querySelector(".download").innerHTML = `Export to .CSV <i style="color:#FF083B;padding-left:5px"class="fa fa-download" aria-hidden="true"></i>`
+        document.querySelector(".clearFilter").innerHTML = `clearFilters <i class="fa fa-ban" style="color:#FF083B;padding-left:5px"aria-hidden="true"></i>`
+
+        if (document.querySelector('.tablebody').innerHTML.length > 13) {
+            document.querySelector('.tablebody').innerHTML = ""
+        }
+        let string = `<th class="realheader index">Index</th>`
+        let string2 = `<th class="realicon index"></th>`
+        let counterForLoop = 0
+
+        window.userData[4] = 0;
+        window.userData[5] = "";
+        window.userData[3] = "noword";
+        window.userData[2] = "nocolumn";
+
+        window.userData[1] = e;
+        let response = await fetch(`/tableHeaders?c=${window.userData}`)
+        let data = await response.json().then(data => {
+
+            data.forEach(ele => {
+                string = string + `<th class="realheader">${ele} </th>`
+                string2 = string2 + `<th class="realicon ${counterForLoop}">
+                        <form>
+                            <div class="search id0"><input name="form" class="filter" type="text" autocomplete="off"
+                                    placeholder="filter" onkeyup='filterContent(this); valueCount(this)' /></div>
+                        </form>
+                    </th>`
+                counterForLoop += 1
+            })
+
+
+            document.querySelector(".headersOfTable").innerHTML = string;
+            document.querySelector(".iconsOfTable").innerHTML = string2;
+
+        })
+        watcher.style.display = "block";
+        watcher.style.width = (200 * (counterForLoop + 1) + 80).toString() + 'px'
+        // console.log((200 * (counterForLoop + 1) + 80).toString() + 'px')
+        intersectionObserver.observe(watcher)
+        let abab = await fetch(`/tableInfo?c=${window.userData},${e}`)
+        let baba = await abab.text().then(ele => {
+            tableinfo1 = ele.split("/")
+            let tableData = `<p>Table Information</p>
+      <p class="rows" id= "rowscount">Number of Rows: ${tableinfo1[0]}</p>
+      <p>Number of Columns: ${counterForLoop + 1}</p>`
+            document.querySelector(".tableInfo").innerHTML = tableData;
+        })
+
+
+
+    }
+
+    async function filterContent(e) {
+
+        if ((e.charCode || e.keyCode) === 13) {
+            e.preventDefault();
+        }
+        watcher.style.display = "none";
+        let index = e.parentNode.parentNode.parentNode.className
+        let columnName = document.getElementsByClassName('realheader')[Number(index.split(" ")[1]) + 1].textContent
+        window.userData[2] = columnName;
+        window.userData[3] = e.value;
+        window.userData[4] = counter;
+
+
+        table.innerHTML = "";
+
+        if (controller) {
+            controller.abort();
+        }
+        if (AbortController) {
+            controller = new AbortController();
+            var signal = controller.signal;
+        }
+        fetch(`/test_load?c=${window.userData}`, { signal })
+            .then(function (response) {
+                // console.log("response", response);
+                response.json().then((data) => {
+                    table.insertAdjacentHTML("beforeend", data);
+                    window.userData[4] = 35;
+                    watcher.style.display = "block";
+
+                })
+
+            })
+            .catch(function (e) {
+                if (e.name === "AbortError") {
+                    redundantRequests++;
+                    console.log(redundantRequests)
+                }
+
+            })
+
+
+
+    }
+
+    async function valueCount(e) {
+        if ((e.charCode || e.keyCode) === 13) {
+            e.preventDefault();
+        }
+        watcher.style.display = "none";
+        let index = e.parentNode.parentNode.parentNode.className
+        let columnName = document.getElementsByClassName('realheader')[Number(index.split(" ")[1]) + 1].textContent
+        window.userData[2] = columnName;
+        window.userData[3] = e.value;
+        window.userData[4] = counter;
+
+
+        table.innerHTML = "";
+        // if (controller) {
+        //     controller.abort();
+        // }
+        // if (AbortController) {
+        //     controller = new AbortController();
+        //     var signal = controller.signal;
+        // }
+        let response = await fetch(`/tableInfo?c=${window.userData},${e}`);
+        let data = await response.text()
+        // console.log(data);
+        line = `Number of Rows: ${data}`
+        document.getElementById("rowscount").innerHTML = line;
+
+    }
+
+
+    async function downloadFile() {
+        document.querySelector(".download").innerHTML = `<span style="animation:fade 2s infinite;;">Exporting</span>`
+        await fetch(`/downloadFile?c=${window.userData}`).then(function (response) {
+            // returns a Headers{} object
+            response.blob().then(function (myBlob) {
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(myBlob);
+                link.download = "report.csv";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                document.querySelector(".download").innerHTML = `Export to .CSV <i style="color:#FF083B;padding-left:5px"class="fa fa-download" aria-hidden="true"></i>`
+            });
+        });
+
+    }
+    var intersectionObserver = new IntersectionObserver(entries => {
+
+        if (entries[0].intersectionRatio <= 0) {
+            return;
+        }
+        loadItems();
+    });
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/login.css') }}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add User</title>
+</head>
+
+<body>
+  <section>
+    <div class="imgBx">
+      <img src="{{ url_for('static', filename='./images/login.jpg ') }}" alt="login_img">
+    </div>
+    <div class="contentBx">
+      <div class="formBx">
+        <div class="message">{{message}}</div>
+        <!-- <a class="table_link" href="{{ url_for('dashboard') }}">Home</a> -->
+        <h2>Register User</h2>
+        <form action="/register" method="POST">
+          <div class="inputBx">
+            <span>User ID</span>
+            <input type="text" class="login-field" value="" name="username" required>
+          </div>
+          <div class="inputBx">
+            <span>Name</span>
+            <input type="text" class="login-field" value="" name="name" required>
+          </div>
+          <div class="inputBx">
+            <span>Email ID</span>
+            <input type="text" class="login-field" value="" name="email_id" required>
+          </div>
+          <div class="inputBx">
+            <span>Department</span>
+            <input type="text" class="login-field" value="" name="department" required>
+          </div>
+          <div class="inputBx">
+            <span>User Type</span>
+            <input type="text" class="login-field" value="" name="user_type" required>
+          </div>
+          <div class="inputBx">
+            <span>Contact No.</span>
+            <input type="text" class="login-field" value="" name="contact_no" required>
+          </div>
+          <div class="inputBx">
+            <span>Password</span>
+            <input type="password" onkeyup="check()" class="login-field pass" value=""  name="password" required>
+          </div>
+          <div class="inputBx">
+            <span  class="register" for="email">Confirm Password <i class="fa fa-check"  style="color:green; display:none" aria-hidden="true"></i>  <i class="fa fa-times" style="color:red; display:none" aria-hidden="true"></i></span> 
+            <input type="password" onkeyup="check()" class="login-field cpass" value=""  name="confirmpassword" required>
+          </div>
+          <div class="inputBx">
+            <input type="submit" id="submitr" value="Submit">
+          </div>
+          <div class="inputBx">
+            <p>Return Home <a href="{{ url_for('dashboard') }}">Home</a></p>
+          </div>
+        </form>
+        <p>Developed & Designed By PTECH</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
+<script>
+
+
+
+function check(){
+    let cpass = document.querySelector(".cpass")
+    let pass = document.querySelector(".pass")
+    if(cpass.value === pass.value && cpass.value && pass.value){
+        document.querySelector(".fa-check").style.display = "inline"
+        document.querySelector(".fa-times").style.display = "none"
+        document.querySelector("#submitr").style.display = "inline"
+    }
+    else{
+        document.querySelector(".fa-check").style.display = "none"
+        document.querySelector(".fa-times").style.display = "inline"
+        document.querySelector("#submitr").style.display = "none"
+    }
+}
+
+</script>
+
+
+
+
+
+
